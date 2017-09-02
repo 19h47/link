@@ -105,11 +105,13 @@ class Link_Metaboxes {
         // Retrieve an existing value from the database
         $link_url = get_post_meta( $post->ID, 'link_url', true );
         $link_color = get_post_meta( $post->ID, 'link_color', true );
+        $link_description = get_post_meta( $post->ID, 'link_description', true );
         
         
         // Set default values
         if ( empty( $link_url ) ) $link_url = '';
         if ( empty( $link_color ) ) $link_color = '';
+        if ( empty( $link_description ) ) $link_description = '';
 
         
         include( plugin_dir_path( __FILE__ ) . 'partials/' . $this->plugin_name . '-form.php' );
@@ -158,10 +160,12 @@ class Link_Metaboxes {
         // Sanitize user input.
         $link_url = isset( $_POST[ 'link_url' ] ) ? sanitize_text_field( $_POST[ 'link_url' ] ) : '';
         $link_color = isset( $_POST[ 'link_color' ] ) ? sanitize_text_field( $_POST[ 'link_color' ] ) : '';
+        $link_description = isset( $_POST[ 'link_description' ] ) ? sanitize_text_field( $_POST[ 'link_description' ] ) : '';
 
         
         // Update the meta field in the database.
         update_post_meta( $post_id, 'link_url', $link_url );
         update_post_meta( $post_id, 'link_color', $link_color );
+        update_post_meta( $post_id, 'link_description', $link_description );
     }
 }

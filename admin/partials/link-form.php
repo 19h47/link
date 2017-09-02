@@ -7,12 +7,34 @@
  */
 ?>
 <script type='text/javascript'>
-console.log('yo');
-            jQuery(document).ready(function($) {
-                $('.link_color_field').wpColorPicker();
-            });
-        </script>
+	console.log('yo');
+    jQuery(document).ready(function($) {
+        $('.link_color_field').wpColorPicker();
+    });
+</script>
+
+
 <table class="form-table">
+
+	<!-- Description -->
+	<tr>
+		<th scope="row">
+			<label for="link_description" class="link_description_label">
+				<?php _e( 'Description', 'link' ) ?>
+			</label>
+		</th>
+		<td>
+
+			<textarea
+				class="link_description_field large-text" 
+				type="url" 
+				cols="80" 
+				rows="10"
+				id="link_description" 
+				name="link_description" 
+			><?php echo esc_html( $link_description ) ?></textarea>
+		</td>
+	</tr>
 	
 	<!-- URL -->
 	<tr>
@@ -26,7 +48,7 @@ console.log('yo');
 				type="url" 
 				id="link_url" 
 				name="link_url" 
-				class="link_url_field" 
+				class="link_url_field large-text" 
 				placeholder="<?php _e( '', 'run' ) ?>" 
 				value="<?php echo esc_html( $link_url ) ?>"
 			>
@@ -46,7 +68,7 @@ console.log('yo');
 			<input 
 				type="text" 
 				id="link_color" 
-				class="link_color_field" 
+				class="link_color_field large-text" 
 				name="link_color" 
 				placeholder="<?php _e( '', 'run' ) ?>" 
 				value="<?php echo esc_html( $link_color ) ?>"
