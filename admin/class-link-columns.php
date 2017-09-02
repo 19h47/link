@@ -31,7 +31,12 @@ class Link_Columns {
         
         add_filter( 'manage_link_posts_columns', array( $this, 'add_link_columns' ) );
         add_action( 'manage_link_posts_custom_column' , array( $this, 'link_custom_columns' ), 10, 2 );
-        
+
+        add_filter( 'manage_edit-link_sortable_columns' , array( $this, 'order_column_register_sortable' ) );
+
+        add_action( 'restrict_manage_posts', array( $this, 'tsm_filter_post_type_by_taxonomy') );
+        add_filter( 'parse_query', array( $this, 'tsm_convert_id_to_term_in_query' ) );
+    
     }
 
 
@@ -89,7 +94,7 @@ class Link_Columns {
 
                 if ( $data ) {
 
-                    echo $data;
+                    echo "<a href=\"" . get_edit_post_link( $post_id ) . "\">" . $data . "</a>";
 
                 } else {
                     echo '—';
@@ -119,8 +124,6 @@ class Link_Columns {
                 
                 echo get_post_field( 'menu_order', $post_id );
 
-
-
             break;
 
             case 'link_status' : 
@@ -135,21 +138,99 @@ class Link_Columns {
                         break;
                         
                     case 'publish':
-                        _e('Published');
+
+                        _e( 'Published' );
+
                         break;
+
                     case 'future':
-                        _e('Scheduled');
+
+                        _e( 'Scheduled');
+
                         break;
                     case 'pending':
-                        _e('Pending Review');
+                        _e( 'Pending Review' );
+
                         break;
                     case 'draft':
+
                     case 'auto-draft':
-                        _e('Draft');
+
+                        _e( 'Draft' );
+
                         break;
                 }
 
             break;
         }
     }
+
+
+    function order_column_register_sortable( $columns ){
+
+        $columns['link_order'] = 'menu_order';
+
+        return $columns;
+    }
+
+
+
+    /**
+     * Display a custom taxonomy dropdown in admin
+     * @author Mike Hemberger
+     * @link http://thestizmedia.com/custom-post-type-filter-admin-custom-taxonomy/
+     */
+    function tsm_filter_post_type_by_taxonomy() {
+        
+        global $typenow;
+
+        $taxonomy  = 'link_category'; // change to your taxonomy
+        
+        if ( $typenow != 'link' ) {
+            return;
+        }
+
+        $selected = isset( $_GET[$taxonomy] ) ? $_GET[$taxonomy] : '';
+
+        $info_taxonomy = get_taxonomy($taxonomy);
+        wp_dropdown_categories( array(
+            'show_option_all'   => __( "Voir toutes les {$info_taxonomy->label}" ),
+            'taxonomy'          => $taxonomy,
+            'name'              => $taxonomy,
+            'orderby'           => 'name',
+            'selected'          => $selected,
+            'show_count'        => false,
+            'hide_empty'        => false,
+        ));
+        
+    }
+
+
+    /**
+     * Filter posts by taxonomy in admin
+     * @author  Mike Hemberger
+     * @link http://thestizmedia.com/custom-post-type-filter-admin-custom-taxonomy/
+     */
+    function tsm_convert_id_to_term_in_query($query) {
+        global $pagenow;
+
+        if ( $pagenow != 'edit.php' ) {
+            return;
+        }
+        
+        $post_type = 'link'; // change to your post type
+        $taxonomy  = 'link_category'; // change to your taxonomy
+        $q_vars    = &$query->query_vars;
+
+        if ( 
+            isset( $q_vars['post_type'] ) && 
+            $q_vars['post_type'] == $post_type && 
+            isset( $q_vars[$taxonomy] ) && 
+            is_numeric( $q_vars[$taxonomy] ) && $q_vars[$taxonomy] != 0 
+        ) {
+            $term = get_term_by('id', $q_vars[$taxonomy], $taxonomy);
+            $q_vars[$taxonomy] = $term->slug;
+        }
+    }
+    
 }

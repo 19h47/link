@@ -101,43 +101,38 @@ class Link_Admin {
 
 	}
 
-	
-	/**
-	 * CSS
-	 * 
-	 * @access public
-	 */
-	public function css() {    
-		?>
-	    	<style>
-				#dashboard_right_now .link-count:before { content: "\f103"; }
-				.fixed .column-color { vertical-align: top; }
-				.widefat .column-featured-image { width: 60px; }
-				.widefat .column-featured-image img {
-					display: inline-block;
-					vertical-align: middle;
-				}
-				.fixed .column-colors,
-				.fixed .column-link_status,
-				.fixed .column-link_order { 
-					width: 10%;
-					vertical-align: middle;
-				}
-				.fixed .column-link_order,
-				.fixed .column-colors { 
-					text-align: center; 
-				}
-				.column-colors .color-indicator { 
-					border: none !important; 
-					border-radius: 50% !important; 
-					height: 30px !important; 
-					width: 30px !important; 
-					margin-left: auto; 
-					margin-right: auto;
-				}
 
-	    	</style>
-		<?php
+	/**
+	 * Register the JavaScript for the admin area.
+	 *
+	 * @since    1.0.0
+	 */
+	public function enqueue_scripts() {
+		
+		wp_enqueue_script( 
+			$this->plugin_name . '-color-picker', 
+			plugin_dir_url( __FILE__ ) . 'js/link-color-picker.js', 
+			array( 'jquery' ), 
+			$this->version, 
+			false 
+		);
+	}
+
+
+	/**
+	 * Register the stylesheets for the admin area.
+	 *
+	 * @since    1.0.0
+	 */
+	public function enqueue_styles() {
+
+		wp_enqueue_style( 
+			$this->plugin_name, 
+			plugin_dir_url( __FILE__ ) . 'css/link-admin.css', 
+			array(), 
+			$this->version, 
+			'all' 
+		);
 	}
 
 

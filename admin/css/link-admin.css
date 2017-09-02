@@ -1,0 +1,33 @@
+/**
+ * Admin CSS
+ */
+#dashboard_right_now .link-count:before { content: "\f103"; }
+
+.fixed .column-color { vertical-align: top; }
+
+.widefat .column-featured-image { width: 60px; }
+
+.widefat .column-featured-image  a { display: block; }
+
+.widefat .column-featured-image img {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.fixed .column-colors,
+.fixed .column-link_status,
+.fixed .column-link_order { 
+	width: 10%;
+	vertical-align: middle;
+}
+
+.fixed .column-colors { text-align: center; }
+
+.column-colors .color-indicator { 
+	border: none !important; 
+	border-radius: 50% !important; 
+	height: 30px !important; 
+	width: 30px !important; 
+	margin-left: auto; 
+	margin-right: auto;
+}

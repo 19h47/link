@@ -6,14 +6,6 @@
  * @author     Levron Jérémy <levronjeremy@19h47.fr>
  */
 ?>
-<script type='text/javascript'>
-	console.log('yo');
-    jQuery(document).ready(function($) {
-        $('.link_color_field').wpColorPicker();
-    });
-</script>
-
-
 <table class="form-table">
 
 	<!-- Description -->
@@ -70,7 +62,7 @@
 				id="link_color" 
 				class="link_color_field large-text" 
 				name="link_color" 
-				placeholder="<?php _e( '', 'run' ) ?>" 
+				placeholder="<?php _e( '', 'link' ) ?>" 
 				value="<?php echo esc_html( $link_color ) ?>"
 			>
 		</td>
