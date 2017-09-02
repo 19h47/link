@@ -111,20 +111,18 @@ class Link_Admin {
 		?>
 	    	<style>
 				#dashboard_right_now .link-count:before { content: "\f103"; }
-				.fixed .column-color { 
-
-				    vertical-align: top;
-				}
+				.fixed .column-color { vertical-align: top; }
 				.widefat .column-featured-image { width: 60px; }
 				.widefat .column-featured-image img {
 					display: inline-block;
 					vertical-align: middle;
 				}
-				.fixed .column-colors { 
+				.fixed .column-colors,
+				.fixed .column-link_status { 
 					width: 10%;
-					text-align: center;
 					vertical-align: middle;
 				}
+				.fixed .column-colors { text-align: center; }
 				.column-colors .color-indicator { 
 					border: none !important; 
 					border-radius: 50% !important; 
@@ -146,32 +144,36 @@ class Link_Admin {
 	 */
 	public function at_a_glance( $items ) {
 		$post_type = 'link';
-	    	$post_status = 'publish';
+    	$post_status = 'publish';
 
-	    	$object = get_post_type_object( $post_type );
-	    
-	    	$num_posts = wp_count_posts( $post_type );
+    	$object = get_post_type_object( $post_type );
+    
+    	$num_posts = wp_count_posts( $post_type );
 
-	    	if ( ! $num_posts || ! isset ( $num_posts->{$post_status} ) || 0 === (int) $num_posts->{$post_status} ) {
-	        
-	        	return $items;
-	    	}
+    	if ( 
+    		! $num_posts || 
+    		! isset ( $num_posts->{ $post_status } ) || 
+    		0 === (int) $num_posts->{ $post_status } 
+    	) {
+        
+        	return $items;
+    	}
 
-	    	$text = sprintf(
-			_n( '%1$s %4$s%2$s', '%1$s %4$s%3$s', $num_posts->{$post_status} ), 
-			number_format_i18n( $num_posts->{$post_status} ), 
+    	$text = sprintf(
+			_n( '%1$s %4$s%2$s', '%1$s %4$s%3$s', $num_posts->{ $post_status } ), 
+			number_format_i18n( $num_posts->{ $post_status } ), 
 			strtolower( $object->labels->singular_name ), 
 			strtolower( $object->labels->name ),
 			'pending' === $post_status ? 'Pending ' : ''
-	    	);
+    	);
 
-	    	if ( current_user_can( $object->cap->edit_posts ) ) {
-	        	$items[] = sprintf( '<a class="%1$s-count" href="edit.php?post_status=%2$s&post_type=%1$s">%3$s</a>', $post_type, $post_status, $text );
-	    
-	    	} else {
-	        	$items[] = sprintf( '<span class="%1$s-count">%s</span>', $text );
-	    	}
-	    
-	    	return $items;
+    	if ( current_user_can( $object->cap->edit_posts ) ) {
+        	$items[] = sprintf( '<a class="%1$s-count" href="edit.php?post_status=%2$s&post_type=%1$s">%3$s</a>', $post_type, $post_status, $text );
+    
+    	} else {
+        	$items[] = sprintf( '<span class="%1$s-count">%s</span>', $text );
+    	}
+    
+    	return $items;
 	}
 }

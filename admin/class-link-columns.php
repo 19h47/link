@@ -45,8 +45,9 @@ class Link_Columns {
         $columns['colors'] = __( 'Couleur' );
         $columns['featured-image'] = __( 'Image' );
         $columns['link_categories'] = __( 'Catégorie' );
+        $columns['link_status'] = __( 'État' );
 
-        $order = array( 'cb', 'featured-image', 'title', 'link_categories', 'colors' );
+        $order = array( 'cb', 'featured-image', 'title', 'link_categories', 'colors', 'link_status' );
         
         foreach ( $order as $colname ) {
 
@@ -109,6 +110,34 @@ class Link_Columns {
                     echo rtrim( $terms, ', ' );
                 } else {
                     echo '—';
+                }
+
+            break;
+
+            case 'link_status' : 
+                
+                $status = get_post_status( $post_id );
+
+                switch ( $status ) {
+                    case 'private':
+                        
+                        _e('Privately Published');
+                        
+                        break;
+                        
+                    case 'publish':
+                        _e('Published');
+                        break;
+                    case 'future':
+                        _e('Scheduled');
+                        break;
+                    case 'pending':
+                        _e('Pending Review');
+                        break;
+                    case 'draft':
+                    case 'auto-draft':
+                        _e('Draft');
+                        break;
                 }
 
             break;
