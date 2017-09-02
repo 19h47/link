@@ -118,11 +118,15 @@ class Link_Admin {
 					vertical-align: middle;
 				}
 				.fixed .column-colors,
-				.fixed .column-link_status { 
+				.fixed .column-link_status,
+				.fixed .column-link_order { 
 					width: 10%;
 					vertical-align: middle;
 				}
-				.fixed .column-colors { text-align: center; }
+				.fixed .column-link_order,
+				.fixed .column-colors { 
+					text-align: center; 
+				}
 				.column-colors .color-indicator { 
 					border: none !important; 
 					border-radius: 50% !important; 

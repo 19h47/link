@@ -92,7 +92,7 @@ class Link_Registrations {
 			'label'               	=> 'link',
 	        'description'         	=> __( 'Les liens', $this->plugin_name ),
 	        'labels'              	=> $labels,
-	        'supports'            	=> array( 'title', 'thumbnail' ),
+	        'supports'            	=> array( 'title', 'thumbnail', 'page-attributes' ),
 	        'taxonomies'          	=> array( 'link_category' ),
 	        'hierarchical'        	=> false,
 	        'public'              	=> true,

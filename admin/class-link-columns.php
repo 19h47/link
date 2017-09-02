@@ -46,8 +46,9 @@ class Link_Columns {
         $columns['featured-image'] = __( 'Image' );
         $columns['link_categories'] = __( 'Catégorie' );
         $columns['link_status'] = __( 'État' );
+        $columns['link_order'] = __( 'Ordre' );
 
-        $order = array( 'cb', 'featured-image', 'title', 'link_categories', 'colors', 'link_status' );
+        $order = array( 'cb', 'featured-image', 'title', 'link_categories', 'colors', 'link_status', 'link_order' );
         
         foreach ( $order as $colname ) {
 
@@ -111,6 +112,14 @@ class Link_Columns {
                 } else {
                     echo '—';
                 }
+
+            break;
+
+            case 'link_order' : 
+                
+                echo get_post_field( 'menu_order', $post_id );
+
+
 
             break;
 
