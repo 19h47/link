@@ -1,8 +1,11 @@
 # Link CPT 🔗
 
-> The plugin doesn't bring any kind of front end assets (like JS, shortcode, CSS), you have to do your request on your own.
+> The plugin doesn't bring any kind of front end assets (like JS, shortcode, CSS), you have to do your query on your own.
 
-__Link__ is a __WordPress__ plugin for create __Link__ custom post type and a custom category associate to __Link__. __Link__ CPT is like good old blogroll. Blogroll isn't supported anymore in __WordPress__, it's in source code but only for backward compatibility purpose.
+Initially built for the __JVEB Blog__, __Link__ is a __WordPress__ plugin for create a custom post type and a custom category associate to __Link__.  
+__Link__ CPT is like the good old blogroll. Blogroll isn't supported anymore in __WordPress__, it's in source code but only for backward compatibility purpose.
+
+This is the purpose of this plugin.
 
 ## Feature
 
