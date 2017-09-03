@@ -4,6 +4,8 @@
 
 __Link__ is a __WordPress__ plugin for create __Link__ custom post type and a custom category associate to __Link__. __Link__ CPT is like good old blogroll. Blogroll isn't supported anymore in __WordPress__, it's in source code but only for backward compatibility purpose.
 
+## Feature
+
 A __Link__ can have: 
 
 - an URL, save as `link_url` in _post_meta_,
@@ -12,7 +14,7 @@ A __Link__ can have:
 
 - a description, save `link_description` in _post_meta_,
 
-- For image the custom post type used the built in thumbnail.
+- For image the custom post type used the built in thumbnail functionality.
 
 - The link plugin offers the possibility to order links in backoffice. Thanks to menu_order.
 
