@@ -12,7 +12,7 @@ A __Link__ can have:
 
 - a color, save as `link_color` in _post_meta_,
 
-- a description, save `link_description` in _post_meta_,
+- a description, save as `link_description` in _post_meta_,
 
 - For image the custom post type used the built in thumbnail functionality.
 
