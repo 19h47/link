@@ -1,8 +1,6 @@
 # Link CPT 🔗
 
-## NOTES
-
-The plugin doesn't bring any kind of front end assets (like JS, shortcode, CSS), you have to do your request on your own.
+> The plugin doesn't bring any kind of front end assets (like JS, shortcode, CSS), you have to do your request on your own.
 
 Plugin for create **Link** custom post type and a custom category. **Link** CPT is like good old blogroll. Blogroll isn't supported anymore in **WordPress**, it's in source code but only for backward compatibility purpose.
 
