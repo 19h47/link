@@ -4,6 +4,7 @@
  * Columns
  */
 class Link_Columns {
+    
     /**
      * The ID of this plugin.
      *
@@ -13,15 +14,17 @@ class Link_Columns {
      */
     private $plugin_name;
     
+    
     /**
      * The plugin_version of this plugin.
      *
      * @since       1.0.0
      * @access      private
-     * @var         string          $plugin_version            The current plugin_version of this plugin.
+     * @var         string          $plugin_version     The current plugin_version of this plugin.
      */
     private $plugin_version;
  
+    
     /**
      * Constructor
      */
@@ -165,14 +168,16 @@ class Link_Columns {
         }
     }
 
-
+    
+    /**
+     * Order column
+     */
     function order_column_register_sortable( $columns ){
 
         $columns['link_order'] = 'menu_order';
 
         return $columns;
     }
-
 
 
     /**
@@ -232,5 +237,4 @@ class Link_Columns {
             $q_vars[$taxonomy] = $term->slug;
         }
     }
-    
 }
