@@ -79,8 +79,7 @@ class Link_Metaboxes {
     /**
      * Adds the meta box
      *
-     * 
-	 * $id, $title, $callback, $page, $context, $priority, $callback_args
+     * $id, $title, $callback, $page, $context, $priority, $callback_args
 	 * @see  https://developer.wordpress.org/reference/functions/add_meta_box/
 	 */
     public function add_metabox() {
@@ -116,7 +115,7 @@ class Link_Metaboxes {
         if ( empty( $link_description ) ) $link_description = '';
 
         
-        include( plugin_dir_path( __FILE__ ) . 'partials/' . $this->plugin_name . '-form.php' );
+		include( plugin_dir_path( __FILE__ ) . 'partials/' . $this->plugin_name . '-form.php' );
 
     }
  
