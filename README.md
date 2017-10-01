@@ -28,3 +28,7 @@ __WordPress__, since [3.5](https://make.wordpress.org/core/2012/11/30/new-color-
 ## TODO
 
 - [ ] Create a shortcode
+
+## Sources
+
+This plugin is based on [Devin Vinson boilerplate plugin](https://github.com/DevinVinson/WordPress-Plugin-Boilerplate), thanks to him, I learn a lot. 🙏
