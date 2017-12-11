@@ -6,14 +6,14 @@
  * @author     Levron Jérémy <levronjeremy@19h47.fr>
  */
 class Link_Registrations {
-	
+
 	/**
 	 * Post type name
-	 * 
+	 *
 	 * @var string
 	 */
 	public $post_type = 'link';
-	
+
 
 	/**
      * The unique identifier of this plugin.
@@ -23,26 +23,26 @@ class Link_Registrations {
      * @var      string    $plugin_name    The string used to uniquely identify this plugin.
      */
     protected $plugin_name;
-    
+
 
     /**
      * The version of the plugin.
      *
      * @since    1.0.0
      * @access   private
-     * @var      string    $version    The current version of this plugin.
+     * @var      string    $plugin_version    The current version of this plugin.
      */
     private $plugin_version;
-	
+
 
 	/**
 	 * init
 	 */
 	public function __construct( $plugin_name, $plugin_version ) {
-		
+
 		$this->plugin_name = $plugin_name;
         $this->plugin_version = $plugin_version;
-		
+
 		// Add the Run post type
 		add_action( 'init', array( $this, 'register_post_type' ) );
 	}
@@ -54,7 +54,7 @@ class Link_Registrations {
 	 * @link http://codex.wordpress.org/Function_Reference/register_post_type
 	 */
 	public function register_post_type() {
-		
+
 		$labels = array(
 			'name'                  => _x( 'Liens', 'Lien Nom pluriel', $this->plugin_name ),
 	        'singular_name'         => _x( 'Lien', 'Lien Nom singulier', $this->plugin_name ),

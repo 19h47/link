@@ -35,17 +35,17 @@ class Link {
      * @var      string    $plugin_name    The string used to uniquely identify this theme.
      */
     protected $plugin_name;
-    
+
 
     /**
      * The version of the theme.
      *
      * @since    1.0.0
      * @access   private
-     * @var      string    $version    The current version of this theme.
+     * @var      string    $plugin_version    The current version of this theme.
      */
     private $plugin_version;
-	
+
 
 	/**
 	 * Construct function
@@ -57,7 +57,7 @@ class Link {
         $this->plugin_version = '1.0.0';
 
         $this->load_dependencies();
-        $this->define_admin_hooks(); 
+        $this->define_admin_hooks();
 	}
 
 
@@ -77,7 +77,7 @@ class Link {
 	 * @access 		private
 	 */
 	private function load_dependencies() {
-		
+
 		/**
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
@@ -147,6 +147,6 @@ class Link {
 	 * @return 		string 					The version number of the plugin.
 	 */
 	public function get_version() {
-		return $this->version;
+		return $this->plugin_version;
 	}
 }

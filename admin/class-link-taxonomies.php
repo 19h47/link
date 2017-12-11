@@ -20,7 +20,7 @@ class Link_Taxonomies {
      *
      * @since    1.0.0
      * @access   private
-     * @var      string    $version    The current version of this theme.
+     * @var      string    $plugin_version    The current version of this theme.
      */
     private $plugin_version;
 
@@ -36,7 +36,7 @@ class Link_Taxonomies {
 
         add_action( 'init', array( &$this, 'register_taxonomy' ) );
 	}
-	
+
 
 	// Register Custom Taxonomy
 	function register_taxonomy() {
