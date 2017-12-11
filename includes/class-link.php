@@ -131,6 +131,8 @@ class Link {
 	public function get_plugin_name() {
 		return $this->plugin_name;
 	}
+	
+	
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
@@ -140,6 +142,8 @@ class Link {
 	public function get_loader() {
 		return $this->loader;
 	}
+	
+	
 	/**
 	 * Retrieve the version number of the plugin.
 	 *
