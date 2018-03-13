@@ -32,6 +32,7 @@ __WordPress__, since [3.5](https://make.wordpress.org/core/2012/11/30/new-color-
 - [ ] Create a shortcode
 
 ## References
+
 - [WordPress plugin boilerplate](https://github.com/DevinVinson/WordPress-Plugin-Boilerplate)
 
 Thanks to [DevinVinson](https://github.com/DevinVinson), I learn a lot. 🙏
