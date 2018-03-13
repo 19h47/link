@@ -23,28 +23,28 @@
  * @since      1.0.0
  * @package    Link
  * @subpackage link/includes
- * @author     Levron Jérémy <levronjeremy@19h47.fr>
+ * @author     Jérémy Levron <jeremylevron@19h47.fr>
  */
 class Link {
 
 	/**
-     * The unique identifier of this plugin.
-     *
-     * @since    1.0.0
-     * @access   protected
-     * @var      string    $plugin_name    The string used to uniquely identify this theme.
-     */
-    protected $plugin_name;
+	 * The unique identifier of this plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   protected
+	 * @var      string    $plugin_name    The string used to uniquely identify this theme.
+	 */
+	protected $plugin_name;
 
 
-    /**
-     * The version of the theme.
-     *
-     * @since    1.0.0
-     * @access   private
-     * @var      string    $plugin_version    The current version of this theme.
-     */
-    private $plugin_version;
+	/**
+	 * The version of the theme.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      string    $plugin_version    The current version of this theme.
+	 */
+	private $plugin_version;
 
 
 	/**
@@ -54,10 +54,10 @@ class Link {
 	 */
 	public function __construct() {
 		$this->plugin_name = 'link';
-        $this->plugin_version = '1.0.0';
+		$this->plugin_version = '1.0.0';
 
-        $this->load_dependencies();
-        $this->define_admin_hooks();
+		$this->load_dependencies();
+		$this->define_admin_hooks();
 	}
 
 
@@ -131,8 +131,8 @@ class Link {
 	public function get_plugin_name() {
 		return $this->plugin_name;
 	}
-	
-	
+
+
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
@@ -142,8 +142,8 @@ class Link {
 	public function get_loader() {
 		return $this->loader;
 	}
-	
-	
+
+
 	/**
 	 * Retrieve the version number of the plugin.
 	 *

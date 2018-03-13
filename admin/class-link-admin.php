@@ -19,7 +19,7 @@
  * @since      1.0.0
  * @package    Link
  * @subpackage link/admin
- * @author     Levron Jérémy <levronjeremy@19h47.fr>
+ * @author     Jérémy Levron <jeremylevron@19h47.fr>
  */
 class Link_Admin {
 

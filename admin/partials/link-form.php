@@ -1,9 +1,9 @@
-<?php 
+<?php
 
-/** 
+/**
  * Form fields
  *
- * @author     Levron Jérémy <levronjeremy@19h47.fr>
+ * @author     Jérémy Levron <jeremylevron@19h47.fr>
  */
 ?>
 <table class="form-table">
@@ -18,16 +18,16 @@
 		<td>
 
 			<textarea
-				class="link_description_field large-text" 
-				type="url" 
-				cols="80" 
+				class="link_description_field large-text"
+				type="url"
+				cols="80"
 				rows="10"
-				id="link_description" 
-				name="link_description" 
+				id="link_description"
+				name="link_description"
 			><?php echo esc_html( $link_description ) ?></textarea>
 		</td>
 	</tr>
-	
+
 	<!-- URL -->
 	<tr>
 		<th>
@@ -36,18 +36,18 @@
 			</label>
 		</th>
 		<td>
-			<input 
-				type="url" 
-				id="link_url" 
-				name="link_url" 
-				class="link_url_field large-text" 
-				placeholder="<?php _e( '', 'run' ) ?>" 
+			<input
+				type="url"
+				id="link_url"
+				name="link_url"
+				class="link_url_field large-text"
+				placeholder="<?php _e( '', 'run' ) ?>"
 				value="<?php echo esc_html( $link_url ) ?>"
 			>
 		</td>
 	</tr>
 
-	
+
 	<!-- Colorpicker -->
 	<tr>
 		<th>
@@ -57,15 +57,15 @@
 		</th>
 		<td>
 
-			<input 
-				type="text" 
-				id="link_color" 
-				class="link_color_field large-text" 
-				name="link_color" 
-				placeholder="<?php _e( '', 'link' ) ?>" 
+			<input
+				type="text"
+				id="link_color"
+				class="link_color_field large-text"
+				name="link_color"
+				placeholder="<?php _e( '', 'link' ) ?>"
 				value="<?php echo esc_html( $link_color ) ?>"
 			>
 		</td>
 	</tr>
-	
+
 </table>

@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Link Post Type
+ * Link
  *
  * @link              http://www.19h47.fr
  * @since             1.0.0
@@ -9,9 +10,9 @@
  * @wordpress-plugin
  * Plugin Name:       	Link
  * Plugin URI:        	http://www.19h47.fr/
- * Description:       	Enables a link post type, taxonomy and metaboxes.
+ * Description:       	Enables a Link, taxonomy and metaboxes.
  * Version:           	1.0.0
- * Author:            	Levron Jérémy
+ * Author:            	Jérémy Levron
  * Author URI:        	http://www.19h47.fr
  * License:           	GPL-2.0+
  * License URI:       	http://www.gnu.org/licenses/gpl-2.0.txt

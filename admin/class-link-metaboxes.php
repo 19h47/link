@@ -3,7 +3,7 @@
 /**
  * Metaboxes
  *
- * @author     Levron Jérémy <levronjeremy@19h47.fr>
+ * @author     Jérémy Levron <jeremylevron@19h47.fr>
  */
 class Link_Metaboxes {
 
@@ -123,7 +123,7 @@ class Link_Metaboxes {
 
         include( plugin_dir_path( __FILE__ ) . 'partials/' . $this->plugin_name . '-form.php' );
 =======
-        
+
 		include( plugin_dir_path( __FILE__ ) . 'partials/' . $this->plugin_name . '-form.php' );
 >>>>>>> 94cff20d04a01750eb3f1cd572a32374ac6d755c
 

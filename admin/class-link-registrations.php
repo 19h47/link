@@ -3,7 +3,7 @@
 /**
  * Register post types
  *
- * @author     Levron Jérémy <levronjeremy@19h47.fr>
+ * @author     Jérémy Levron <jeremylevron@19h47.fr>
  */
 class Link_Registrations {
 
