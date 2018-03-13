@@ -34,4 +34,4 @@ __WordPress__, since [3.5](https://make.wordpress.org/core/2012/11/30/new-color-
 ## References
 - [WordPress plugin boilerplate](https://github.com/DevinVinson/WordPress-Plugin-Boilerplate)
 
-Thanks to @DevinVinson, I learn a lot. 🙏
+Thanks to [DevinVinson](https://github.com/DevinVinson), I learn a lot. 🙏
