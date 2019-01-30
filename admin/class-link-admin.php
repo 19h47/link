@@ -113,7 +113,7 @@ class Link_Admin {
 			$this->plugin_name . '-color-picker',
 			plugin_dir_url( __FILE__ ) . 'js/link-color-picker.js',
 			array( 'jquery' ),
-			$this->version,
+			$this->plugin_version,
 			false
 		);
 	}
@@ -130,7 +130,7 @@ class Link_Admin {
 			$this->plugin_name,
 			plugin_dir_url( __FILE__ ) . 'css/link-admin.css',
 			array(),
-			$this->version,
+			$this->plugin_version,
 			'all'
 		);
 	}
