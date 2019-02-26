@@ -5,17 +5,15 @@
  * A class definition that includes attributes and functions used across both the
  * public-facing side of the site and the admin area.
  *
- * @link       http://www.19h47.fr
+ * @link       https://github.com/19h47/link
  * @since      1.0.0
  *
  * @package    Link
  * @subpackage link/includes
  */
 
-
 /**
  * The core plugin class.
- *
  *
  * Also maintains the unique identifier of this plugin as well as the current
  * version of the plugin.
@@ -23,7 +21,7 @@
  * @since      1.0.0
  * @package    Link
  * @subpackage link/includes
- * @author     Jérémy Levron <jeremylevron@19h47.fr>
+ * @author     Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
  */
 class Link {
 
@@ -53,7 +51,7 @@ class Link {
 	 * @access public
 	 */
 	public function __construct() {
-		$this->plugin_name = 'link';
+		$this->plugin_name    = 'link';
 		$this->plugin_version = '1.0.0';
 
 		$this->load_dependencies();
@@ -73,8 +71,8 @@ class Link {
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
 	 *
-	 * @since 		1.0.0
-	 * @access 		private
+	 * @since  1.0.0
+	 * @access private
 	 */
 	private function load_dependencies() {
 
@@ -82,14 +80,12 @@ class Link {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-link-loader.php';
-
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-run-loader.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the Dashboard.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-link-admin.php';
-
 
 		$this->loader = new Run_Loader();
 
@@ -100,8 +96,8 @@ class Link {
 	 * Register all of the hooks related to the dashboard functionality
 	 * of the plugin.
 	 *
-	 * @since 		1.0.0
-	 * @access 		private
+	 * @since  1.0.0
+	 * @access private
 	 */
 	private function define_admin_hooks() {
 		$plugin_admin = new Link_Admin( $this->get_plugin_name(), $this->get_version() );
@@ -114,7 +110,7 @@ class Link {
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
 	 *
-	 * @since 		1.0.0
+	 * @since 1.0.0
 	 */
 	public function run() {
 		$this->loader->run();
@@ -125,8 +121,8 @@ class Link {
 	 * The name of the plugin used to uniquely identify it within the context of
 	 * WordPress and to define internationalization functionality.
 	 *
-	 * @since 		1.0.0
-	 * @return 		string 					The name of the plugin.
+	 * @since  1.0.0
+	 * @return str   The name of the plugin.
 	 */
 	public function get_plugin_name() {
 		return $this->plugin_name;
@@ -136,8 +132,8 @@ class Link {
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
-	 * @since 		1.0.0
-	 * @return 		Run_Loader 				Orchestrates the hooks of the plugin.
+	 * @since  1.0.0
+	 * @return Run_Loader Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;
@@ -147,8 +143,8 @@ class Link {
 	/**
 	 * Retrieve the version number of the plugin.
 	 *
-	 * @since 		1.0.0
-	 * @return 		string 					The version number of the plugin.
+	 * @since  1.0.0
+	 * @return str   The version number of the plugin.
 	 */
 	public function get_version() {
 		return $this->plugin_version;

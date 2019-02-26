@@ -9,6 +9,7 @@ npm-debug.log
 /src/content/
 /src/mockup/
 /vendor/
+/wpcs/
 sftp-config.json.dev
 sftp-config.json
 *.sublime-workspace

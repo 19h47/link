@@ -2,13 +2,12 @@
 /**
  * The dashboard-specific functionality of the plugin.
  *
- * @link       http://www.19h47.fr
+ * @link       https://github.com/19h47/link
  * @since      1.0.0
  *
  * @package    Link
  * @subpackage run/admin
  */
-
 
 /**
  * The dashboard-specific functionality of the plugin.
@@ -19,7 +18,7 @@
  * @since      1.0.0
  * @package    Link
  * @subpackage link/admin
- * @author     Jérémy Levron <jeremylevron@19h47.fr>
+ * @author     Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
  */
 class Link_Admin {
 
@@ -46,15 +45,15 @@ class Link_Admin {
 	/**
 	 * Construct function
 	 *
+	 * @param str $plugin_name The plugin name.
+	 * @param str $plugin_version The plugin version.
 	 * @access public
 	 */
 	public function __construct( $plugin_name, $plugin_version ) {
 
-		$this->plugin_name = $plugin_name;
+		$this->plugin_name    = $plugin_name;
 		$this->plugin_version = $plugin_version;
 
-
-		add_action( 'admin_head', array( $this, 'css' ) );
 		add_filter( 'dashboard_glance_items', array( $this, 'at_a_glance' ) );
 
 		$this->load_dependencies();
@@ -64,7 +63,7 @@ class Link_Admin {
 	/**
 	 * Load dependencies
 	 *
-	 * @acces private
+	 * @access private
 	 */
 	private function load_dependencies() {
 
@@ -75,7 +74,6 @@ class Link_Admin {
 
 		new Link_Registrations( $this->plugin_name, $this->plugin_version );
 
-
 		/**
 		 * Metaboxes
 		 */
@@ -83,14 +81,12 @@ class Link_Admin {
 
 		new Link_Metaboxes( $this->plugin_name, $this->plugin_version );
 
-
 		/**
 		 * Columns
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-link-columns.php';
 
 		new Link_Columns( $this->plugin_name, $this->plugin_version );
-
 
 		/**
 		 * Taxonomies
@@ -118,7 +114,6 @@ class Link_Admin {
 		);
 	}
 
-
 	/**
 	 * Register the stylesheets for the admin area.
 	 *
@@ -139,10 +134,11 @@ class Link_Admin {
 	/**
 	 * "At a glance" items (dashboard widget): add the projects.
 	 *
+	 * @param arr $items Array of items.
 	 * @access public
 	 */
 	public function at_a_glance( $items ) {
-		$post_type = 'link';
+		$post_type   = 'link';
 		$post_status = 'publish';
 
 		$object = get_post_type_object( $post_type );
@@ -151,10 +147,9 @@ class Link_Admin {
 
 		if (
 			! $num_posts ||
-			! isset ( $num_posts->{ $post_status } ) ||
+			! isset( $num_posts->{ $post_status } ) ||
 			0 === (int) $num_posts->{ $post_status }
 		) {
-
 			return $items;
 		}
 

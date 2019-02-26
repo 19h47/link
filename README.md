@@ -1,4 +1,4 @@
-# Link
+# Link 🔗
 
 > The plugin doesn't bring any kind of front end assets (like JS, shortcode, CSS), you have to do your query on your own.
 
@@ -26,6 +26,38 @@ A __Link__ can have:
 __WordPress__, since [3.5](https://make.wordpress.org/core/2012/11/30/new-color-picker-in-wp-3-5/) version, ship in its core a [color picker](https://github.com/automattic/Iris).
 
 ![Columns](img/link-columns.png "Columns")
+
+## PHPCS
+
+### Install the WordPress rules
+
+Add __PHP_CodeSniffer__ to the `composer.json` file
+
+```json
+{
+    "require": {
+        "squizlabs/php_codesniffer": "*"
+    }
+}
+```
+
+Then update dependencies
+
+```bash
+composer update
+```
+
+Create the project
+
+```bash
+Make create-project
+```
+
+### Add the Rules to PHP CodeSniffer
+
+```bash
+Make config-set
+```
 
 ## TODO
 

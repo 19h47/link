@@ -1,24 +1,22 @@
 <?php
-
 /**
  * Link
  *
- * @link              http://www.19h47.fr
- * @since             1.0.0
- * @package           Link
+ * @link    https://github.com/19h47/link
+ * @since   1.0.0
+ * @package Link
  *
  * @wordpress-plugin
- * Plugin Name:       	Link
- * Plugin URI:        	http://www.19h47.fr/
- * Description:       	Enables a Link, taxonomy and metaboxes.
- * Version:           	1.0.0
- * Author:            	Jérémy Levron
- * Author URI:        	http://www.19h47.fr
- * License:           	GPL-2.0+
- * License URI:       	http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       	link
+ * Plugin Name: Link
+ * Plugin URI:  https://github.com/19h47/link
+ * Description: Enables a Link, taxonomy and metaboxes. bring back to life blogroll! 🔗
+ * Version:     2.0.0
+ * Author:      Jérémy Levron
+ * Author URI:  http://www.19h47.fr
+ * License:     GPL-2.0+
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
+ * Text Domain: link
  */
-
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -40,10 +38,10 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-link.php';
  * then kicking off the plugin from this point in the file does
  * not affect the page life cycle.
  *
- * @since 		1.0.0
+ * @since 1.0.0
  */
-function run_Link() {
+function run_link() {
 	$plugin = new Link();
 	$plugin->run();
 }
-run_Link(); // Run, Forrest, run!
+run_link(); // Run, Forrest, run!
