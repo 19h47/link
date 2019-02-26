@@ -1,7 +1,5 @@
 # Link 🔗
 
-> The plugin doesn't bring any kind of front end assets (like JS, shortcode, CSS), you have to do your query on your own.
-
 Initially built for the [J'veux être bonne Blog](http://www.jveuxetrebonne.com/), __Link__ is a __WordPress__ plugin for create a custom post type and a custom category associate to __Link__.
 __Link__ CPT is like the good old blogroll. Blogroll isn't supported anymore in __WordPress__, it's in source code but only for backward compatibility purpose.
 
@@ -58,10 +56,6 @@ Make create-project
 ```bash
 Make config-set
 ```
-
-## TODO
-
-- [ ] Create a shortcode
 
 ## References
 
