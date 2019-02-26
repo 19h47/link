@@ -21,6 +21,10 @@ A __Link__ can have:
 
 - The link plugin offers the possibility to order links in backoffice. Thanks to `menu_order`.
 
+- The plugin bring a __Link__ shortcode that display __Link__ post. The shortcode takes two parameters:
+  - `posts_per_page`
+  - `thumbnail_size`
+
 __WordPress__, since [3.5](https://make.wordpress.org/core/2012/11/30/new-color-picker-in-wp-3-5/) version, ship in its core a [color picker](https://github.com/automattic/Iris).
 
 ![Columns](img/link-columns.png "Columns")
