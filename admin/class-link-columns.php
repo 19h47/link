@@ -45,9 +45,6 @@ class Link_Columns {
 		add_action( 'manage_link_posts_custom_column', array( $this, 'link_custom_columns' ), 10, 2 );
 
 		add_filter( 'manage_edit-link_sortable_columns', array( $this, 'order_column_register_sortable' ) );
-
-		add_action( 'restrict_manage_posts', array( $this, 'filter_post_type_by_taxonomy' ) );
-		add_filter( 'parse_query', array( $this, 'convert_id_to_term_in_query' ) );
 	}
 
 
@@ -88,7 +85,7 @@ class Link_Columns {
 
 				if ( $data ) {
 					?>
-					<div id="link_colors-<?php echo $post_id; ?>" data-color="<?php echo $data; ?>" class="color-indicator" style="background-color: <?php echo $data; ?>"></div>
+					<div id="link_colors-<?php echo esc_attr( $post_id ); ?>" data-color="<?php echo esc_attr( $data ); ?>" class="color-indicator" style="background-color: <?php echo esc_attr( $data ); ?>"></div>
 					<?php
 				} else {
 					echo '—';
@@ -96,11 +93,9 @@ class Link_Columns {
 				break;
 
 			case 'featured-image':
-				$data = get_the_post_thumbnail( $post_id, array( 60, 60 ) );
-
-				if ( $data ) {
+				if ( has_post_thumbnail( $post_id ) ) {
 					?>
-					<a href="<?php echo get_edit_post_link( $post_id ); ?>"><?php echo $data; ?></a>
+					<a href="<?php echo esc_attr( get_edit_post_link( $post_id ) ); ?>"><?php echo get_the_post_thumbnail( $post_id, 'full' ); ?></a>
 					<?php
 				} else {
 					echo '—';
@@ -172,73 +167,5 @@ class Link_Columns {
 		$columns['link_order'] = 'menu_order';
 
 		return $columns;
-	}
-
-
-	/**
-	 * Display a custom taxonomy dropdown in admin
-	 *
-	 * @author Mike Hemberger
-	 * @link   http://thestizmedia.com/custom-post-type-filter-admin-custom-taxonomy/
-	 * @access public
-	 */
-	public function filter_post_type_by_taxonomy() {
-		global $typenow;
-
-		$taxonomy = 'link_category';
-		$selected = '';
-
-		if ( 'link' !== $typenow ) {
-			return;
-		}
-
-		if ( isset( $_GET[ $taxonomy ] ) ) {
-			$selected = sanitize_text_field( wp_unslash( $_GET[ $taxonomy ] ) );
-		}
-
-		$info_taxonomy = get_taxonomy( $taxonomy );
-
-		wp_dropdown_categories(
-			array(
-				'show_option_all' => "Voir toutes les {$info_taxonomy->label}",
-				'taxonomy'        => $taxonomy,
-				'name'            => $taxonomy,
-				'orderby'         => 'name',
-				'selected'        => $selected,
-				'show_count'      => false,
-				'hide_empty'      => false,
-			)
-		);
-	}
-
-
-	/**
-	 * Filter posts by taxonomy in admin
-	 *
-	 * @param obj $query The query.
-	 * @author Mike Hemberger
-	 * @link http://thestizmedia.com/custom-post-type-filter-admin-custom-taxonomy/
-	 * @access public
-	 */
-	public function convert_id_to_term_in_query( $query ) {
-		global $pagenow;
-
-		if ( 'edit.php' !== $pagenow ) {
-			return;
-		}
-
-		$post_type = 'link';
-		$taxonomy  = 'link_category';
-		$q_vars    = $query->query_vars;
-
-		if (
-			isset( $q_vars['post_type'] ) &&
-			$q_vars['post_type'] === $post_type &&
-			isset( $q_vars[ $taxonomy ] ) &&
-			is_numeric( $q_vars[ $taxonomy ] ) && 0 !== $q_vars[ $taxonomy ]
-		) {
-			$term                = get_term_by( 'id', $q_vars[ $taxonomy ], $taxonomy );
-			$q_vars[ $taxonomy ] = $term->slug;
-		}
 	}
 }

@@ -26,6 +26,16 @@
 class Link {
 
 	/**
+	 * The loader that's responsible for maintaining and registering all hooks that power
+	 * the plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   protected
+	 * @var      Link_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 */
+	protected $loader;
+
+	/**
 	 * The unique identifier of this plugin.
 	 *
 	 * @since    1.0.0
@@ -56,6 +66,7 @@ class Link {
 
 		$this->load_dependencies();
 		$this->define_admin_hooks();
+		$this->define_public_hooks();
 	}
 
 
@@ -64,9 +75,9 @@ class Link {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - Run_Loader. Orchestrates the hooks of the plugin.
-	 * - Run_Admin. Defines all hooks for the dashboard.
-	 * - Run_Public. Defines all hooks for the public side of the site.
+	 * - Link_Loader. Orchestrates the hooks of the plugin.
+	 * - Link_Admin. Defines all hooks for the dashboard.
+	 * - Link_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -80,21 +91,43 @@ class Link {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-run-loader.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-link-loader.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the Dashboard.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-link-admin.php';
 
-		$this->loader = new Run_Loader();
+		/**
+		 * The class responsible for defining all actions that occur in the public-facing side of the site.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-link-public.php';
 
+		$this->loader = new Link_Loader();
 	}
 
 
 	/**
-	 * Register all of the hooks related to the dashboard functionality
-	 * of the plugin.
+	 * Register all of the hooks related to the front functionnality of the plugin
+	 *
+	 * @since 2.0.0
+	 */
+	private function define_public_hooks() {
+		$plugin_public = new Link_Public( $this->get_plugin_name(), $this->get_version() );
+
+		/**
+		 * Register shortcode via loader
+		 *
+		 * Use: [link args]
+		 *
+		 * @link https://github.com/DevinVinson/WordPress-Plugin-Boilerplate/issues/262
+		 */
+		$this->loader->add_shortcode( 'link', $plugin_public, 'shortcode_function', $priority = 10, $accepted_args = 2 );
+	}
+
+
+	/**
+	 * Register all of the hooks related to the dashboard functionality of the plugin.
 	 *
 	 * @since  1.0.0
 	 * @access private
@@ -133,7 +166,7 @@ class Link {
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since  1.0.0
-	 * @return Run_Loader Orchestrates the hooks of the plugin.
+	 * @return Link_Loader Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;
