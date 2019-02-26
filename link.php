@@ -9,7 +9,7 @@
  * @wordpress-plugin
  * Plugin Name: Link
  * Plugin URI:  https://github.com/19h47/link
- * Description: Enables a Link, taxonomy and metaboxes. bring back to life blogroll! 🔗
+ * Description: Enables a Link, taxonomy and metaboxes. Bring back to life blogroll! 🔗
  * Version:     2.0.0
  * Author:      Jérémy Levron
  * Author URI:  http://www.19h47.fr
