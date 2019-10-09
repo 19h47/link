@@ -5,10 +5,12 @@
  * @package Link
  */
 
+namespace Link\Admin;
+
 /**
  * Columns
  */
-class Link_Columns {
+class Columns {
 
 	/**
 	 * The ID of this plugin.

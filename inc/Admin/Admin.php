@@ -9,6 +9,10 @@
  * @subpackage run/admin
  */
 
+namespace Link\Admin;
+
+use Link\Admin\{ Registrations, Metaboxes, Columns, Taxonomies };
+
 /**
  * The dashboard-specific functionality of the plugin.
  *
@@ -20,7 +24,7 @@
  * @subpackage link/admin
  * @author     Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
  */
-class Link_Admin {
+class Admin {
 
 	/**
 	 * The unique identifier of this theme.
@@ -67,33 +71,10 @@ class Link_Admin {
 	 */
 	private function load_dependencies() {
 
-		/**
-		 * Registrations
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-link-registrations.php';
-
-		new Link_Registrations( $this->plugin_name, $this->plugin_version );
-
-		/**
-		 * Metaboxes
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-link-metaboxes.php';
-
-		new Link_Metaboxes( $this->plugin_name, $this->plugin_version );
-
-		/**
-		 * Columns
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-link-columns.php';
-
-		new Link_Columns( $this->plugin_name, $this->plugin_version );
-
-		/**
-		 * Taxonomies
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-link-taxonomies.php';
-
-		new Link_Taxonomies( $this->plugin_name, $this->plugin_version );
+		new Registrations( $this->plugin_name, $this->plugin_version );
+		new Metaboxes( $this->plugin_name, $this->plugin_version );
+		new Columns( $this->plugin_name, $this->plugin_version );
+		new Taxonomies( $this->plugin_name, $this->plugin_version );
 
 	}
 

@@ -5,12 +5,14 @@
  * @package Link
  */
 
+namespace Link\Admin;
+
 /**
  * Metaboxes
  *
  * @author     Jérémy Levron <jeremylevron@19h47.fr>
  */
-class Link_Metaboxes {
+class Metaboxes {
 
 	/**
 	 * The ID of this plugin.
@@ -35,10 +37,10 @@ class Link_Metaboxes {
 	/**
 	 * Constructor
 	 *
-	 * @param str $plugin_name The plugin name.
-	 * @param str $plugin_version The plugin version.
+	 * @param string $plugin_name The plugin name.
+	 * @param string $plugin_version The plugin version.
 	 */
-	public function __construct( $plugin_name, $plugin_version ) {
+	public function __construct( string $plugin_name, string $plugin_version ) {
 		$this->plugin_name    = $plugin_name;
 		$this->plugin_version = $plugin_version;
 
@@ -141,7 +143,7 @@ class Link_Metaboxes {
 	 * @param WP_Post $post    Post object.
 	 * @return null
 	 */
-	public function save_metabox( $post_id, $post ) {
+	public function save_metabox( int $post_id, WP_Post $post ) {
 
 		// Add nonce for security and authentication.
 		$nonce_name   = '';

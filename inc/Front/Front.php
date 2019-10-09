@@ -6,17 +6,21 @@
  * @since 2.0.0
  *
  * @package Link
- * @subpackage link/public
+ * @subpackage Link/Front
  */
+
+namespace Link\Front;
+
+use WP_Query;
 
 /**
  * The public-facing functionality of the plugin.
  *
  * @package    Link
- * @subpackage link/public
+ * @subpackage Link/Front
  * @author     Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
  */
-class Link_Public {
+class Front {
 
 	/**
 	 * The ID of this plugin.
@@ -41,11 +45,11 @@ class Link_Public {
 	/**
 	 * Construct function
 	 *
-	 * @param str $plugin_name The name of this plugin.
-	 * @param str $plugin_version The version of this plugin.
+	 * @param string $plugin_name The name of this plugin.
+	 * @param string $plugin_version The version of this plugin.
 	 * @access public
 	 */
-	public function __construct( $plugin_name, $plugin_version ) {
+	public function __construct( string $plugin_name, string $plugin_version ) {
 
 		$this->plugin_name    = $plugin_name;
 		$this->plugin_version = $plugin_version;
@@ -54,11 +58,11 @@ class Link_Public {
 	/**
 	 * Shortcode function
 	 *
-	 * @param  arr $atts Array of attributes.
+	 * @param  array $atts Array of attributes.
 	 * @return $var
 	 * @access public
 	 */
-	public function shortcode_function( $atts = [] ) {
+	public function shortcode_function( array $atts = array() ) {
 		$output = '';
 		$var    = '';
 		$args   = shortcode_atts(
@@ -84,19 +88,20 @@ class Link_Public {
 
 		$output = '<ul class="Link-listing">';
 
-		while ( $query->have_posts() ) :
+		while ( $query->have_posts() ) {
 			$query->the_post();
 			$link_url       = get_post_meta( get_the_ID(), 'link_url', true );
 			$post_thumbnail = get_the_post_thumbnail( get_the_ID(), $args['thumbnail_size'], array( 'title' => get_the_title() ) );
 
-			if ( $post_thumbnail ) :
+			if ( $post_thumbnail )  {
 				$output .= '<li class="Link-listing__item" id="link-' . get_the_ID() . '">';
 				$output .= $link_url ? "<a class=\"Link-listing__link\" href=\"{$link_url}\" target=\"_blank\">" : '';
 				$output .= $post_thumbnail;
 				$output .= $link_url ? '</a>' : '';
 				$output .= '</li>';
-			endif;
-		endwhile;
+			}
+		}
+
 		wp_reset_postdata();
 
 		$output .= '</ul>';

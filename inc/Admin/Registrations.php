@@ -5,12 +5,14 @@
  * @package Link
  */
 
+namespace Link\Admin;
+
 /**
  * Register post types
  *
  * @author     Jérémy Levron <jeremylevron@19h47.fr>
  */
-class Link_Registrations {
+class Registrations {
 
 	/**
 	 * Post type name
@@ -42,11 +44,11 @@ class Link_Registrations {
 	/**
 	 * Init
 	 *
-	 * @param str $plugin_name The plugin name.
-	 * @param str $plugin_version The plugin version.
+	 * @param string $plugin_name The plugin name.
+	 * @param string $plugin_version The plugin version.
 	 * @access public
 	 */
-	public function __construct( $plugin_name, $plugin_version ) {
+	public function __construct( string $plugin_name, string $plugin_version ) {
 
 		$this->plugin_name    = $plugin_name;
 		$this->plugin_version = $plugin_version;

@@ -5,10 +5,12 @@
  * @package Link
  */
 
+namespace Link\Admin;
+
 /**
  * Link taxonomies
  */
-class Link_Taxonomies {
+class Taxonomies {
 
 	/**
 	 * The unique identifier of this theme.

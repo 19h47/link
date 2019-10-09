@@ -10,7 +10,7 @@
  * Plugin Name: Link
  * Plugin URI:  https://github.com/19h47/link
  * Description: Enables a Link, taxonomy and metaboxes. Bring back to life blogroll! 🔗
- * Version:     2.0.0
+ * Version:     3.0.0
  * Author:      Jérémy Levron
  * Author URI:  http://www.19h47.fr
  * License:     GPL-2.0+
@@ -24,12 +24,9 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 
-/**
- * The core plugin class that is used to define internationalization,
- * dashboard-specific hooks, and public-facing site hooks.
- */
-require plugin_dir_path( __FILE__ ) . 'includes/class-link.php';
+require_once dirname( __FILE__ ) . '/vendor/autoload.php';
 
+use Link\{ Link };
 
 /**
  * Begins execution of the plugin.

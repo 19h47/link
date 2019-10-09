@@ -1,8 +1,14 @@
 {
-    "require": {
-        "squizlabs/php_codesniffer": "*"
-    },
-    "scripts": {
-		"lint": "vendor/bin/phpcs --standard=WordPress"
-	}
+    "name": "19h47/link",
+    "type": "wordpress-plugin",
+    "authors": [{
+        "name": "Jérémy Levron",
+        "email": "jeremylevron@19h47.fr"
+    }],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Link\\": "inc/"
+        }
+    }
 }

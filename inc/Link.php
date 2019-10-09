@@ -9,8 +9,13 @@
  * @since      1.0.0
  *
  * @package    Link
- * @subpackage link/includes
  */
+
+namespace Link;
+
+use Link\{ Loader };
+use Link\Admin\{ Admin };
+use Link\Front\{ Front };
 
 /**
  * The core plugin class.
@@ -20,7 +25,6 @@
  *
  * @since      1.0.0
  * @package    Link
- * @subpackage link/includes
  * @author     Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
  */
 class Link {
@@ -31,7 +35,7 @@ class Link {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Link_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -66,18 +70,12 @@ class Link {
 
 		$this->load_dependencies();
 		$this->define_admin_hooks();
-		$this->define_public_hooks();
+		$this->define_front_hooks();
 	}
 
 
 	/**
 	 * Load the required dependencies for this plugin.
-	 *
-	 * Include the following files that make up the plugin:
-	 *
-	 * - Link_Loader. Orchestrates the hooks of the plugin.
-	 * - Link_Admin. Defines all hooks for the dashboard.
-	 * - Link_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -86,24 +84,7 @@ class Link {
 	 * @access private
 	 */
 	private function load_dependencies() {
-
-		/**
-		 * The class responsible for orchestrating the actions and filters of the
-		 * core plugin.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-link-loader.php';
-
-		/**
-		 * The class responsible for defining all actions that occur in the Dashboard.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-link-admin.php';
-
-		/**
-		 * The class responsible for defining all actions that occur in the public-facing side of the site.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-link-public.php';
-
-		$this->loader = new Link_Loader();
+		$this->loader = new Loader();
 	}
 
 
@@ -112,8 +93,8 @@ class Link {
 	 *
 	 * @since 2.0.0
 	 */
-	private function define_public_hooks() {
-		$plugin_public = new Link_Public( $this->get_plugin_name(), $this->get_version() );
+	private function define_front_hooks() {
+		$plugin_public = new Front( $this->get_plugin_name(), $this->get_version() );
 
 		/**
 		 * Register shortcode via loader
@@ -133,7 +114,7 @@ class Link {
 	 * @access private
 	 */
 	private function define_admin_hooks() {
-		$plugin_admin = new Link_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new Admin( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
@@ -155,7 +136,7 @@ class Link {
 	 * WordPress and to define internationalization functionality.
 	 *
 	 * @since  1.0.0
-	 * @return str   The name of the plugin.
+	 * @return string   The name of the plugin.
 	 */
 	public function get_plugin_name() {
 		return $this->plugin_name;
@@ -166,7 +147,7 @@ class Link {
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since  1.0.0
-	 * @return Link_Loader Orchestrates the hooks of the plugin.
+	 * @return Loader Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;
@@ -177,7 +158,7 @@ class Link {
 	 * Retrieve the version number of the plugin.
 	 *
 	 * @since  1.0.0
-	 * @return str   The version number of the plugin.
+	 * @return string   The version number of the plugin.
 	 */
 	public function get_version() {
 		return $this->plugin_version;

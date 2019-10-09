@@ -6,8 +6,9 @@
  * @since      1.0.0
  *
  * @package    Link
- * @subpackage link/includes
  */
+
+namespace Link;
 
 /**
  * Register all actions and filters for the plugin.
@@ -21,14 +22,14 @@
  * @subpackage link/includes
  * @author     Jérémy Levron <jeremylevron@19h47.fr> (http://19H47.fr)
  */
-class Link_Loader {
+class Loader {
 
 	/**
 	 * The array of actions registered with WordPress.
 	 *
 	 * @since 1.0.0
 	 * @access protected
-	 * @var arr $actions The actions registered with WordPress to fire when the plugin loads.
+	 * @var array $actions The actions registered with WordPress to fire when the plugin loads.
 	 */
 	protected $actions;
 
@@ -38,7 +39,7 @@ class Link_Loader {
 	 *
 	 * @since 1.0.0
 	 * @access protected
-	 * @var arr $filters The filters registered with WordPress to fire when the plugin loads.
+	 * @var array $filters The filters registered with WordPress to fire when the plugin loads.
 	 */
 	protected $filters;
 
@@ -69,13 +70,13 @@ class Link_Loader {
 	 * Add a new action to the collection to be registered with WordPress.
 	 *
 	 * @since 1.0.0
-	 * @param str          $hook The name of the WordPress action that is being registered.
-	 * @param obj          $component A reference to the instance of the object on which the action is defined.
-	 * @param str          $callback The name of the function definition on the $component.
+	 * @param string       $hook The name of the WordPress action that is being registered.
+	 * @param object       $component A reference to the instance of the object on which the action is defined.
+	 * @param string       $callback The name of the function definition on the $component.
 	 * @param int Optional $priority The priority at which the function should be fired.
 	 * @param int Optional $accepted_args The number of arguments that should be passed to the $callback.
 	 */
-	public function add_action( $hook, $component, $callback, $priority = 10, $accepted_args = 1 ) {
+	public function add_action( string $hook, $component, $callback, $priority = 10, $accepted_args = 1 ) {
 		$this->actions = $this->add(
 			$this->actions,
 			$hook,
