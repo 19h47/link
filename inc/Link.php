@@ -25,7 +25,7 @@ use Link\Front\{ Front };
  *
  * @since      1.0.0
  * @package    Link
- * @author     Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
+ * @author     Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  */
 class Link {
 

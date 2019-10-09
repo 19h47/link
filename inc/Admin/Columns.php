@@ -35,11 +35,11 @@ class Columns {
 	/**
 	 * Constructor
 	 *
-	 * @param str $plugin_name The plugin name.
-	 * @param str $plugin_version The plugin version.
+	 * @param string $plugin_name The plugin name.
+	 * @param string $plugin_version The plugin version.
 	 * @access public
 	 */
-	public function __construct( $plugin_name, $plugin_version ) {
+	public function __construct( string $plugin_name, string $plugin_version ) {
 		$this->plugin_name    = $plugin_name;
 		$this->plugin_version = $plugin_version;
 
@@ -53,9 +53,9 @@ class Columns {
 	/**
 	 * Add link columns
 	 *
-	 * @param arr $columns Array of columns.
+	 * @param array $columns Array of columns.
 	 */
-	public function add_link_columns( $columns ) {
+	public function add_link_columns( array $columns ) {
 
 		$columns['colors']          = __( 'Couleur' );
 		$columns['featured-image']  = __( 'Image' );
@@ -76,11 +76,11 @@ class Columns {
 	/**
 	 * Link custom columns
 	 *
-	 * @param arr $column_name Array of column name.
+	 * @param array $column_name Array of column name.
 	 * @param int $post_id The post ID.
 	 * @access public
 	 */
-	public function link_custom_columns( $column_name, $post_id ) {
+	public function link_custom_columns( string $column_name, int $post_id ) {
 		switch ( $column_name ) {
 			case 'colors':
 				$data = get_post_meta( $post_id, 'link_color', true );
@@ -161,10 +161,11 @@ class Columns {
 	/**
 	 * Order column
 	 *
-	 * @param arr $columns Array of columns.
+	 * @param array $columns An array of sortable columns.
+	 * @see https://developer.wordpress.org/reference/hooks/manage_this-screen-id_sortable_columns/
 	 * @access public
 	 */
-	public function order_column_register_sortable( $columns ) {
+	public function order_column_register_sortable( array $columns ) {
 
 		$columns['link_order'] = 'menu_order';
 

@@ -7,6 +7,8 @@
 
 namespace Link\Admin;
 
+use WP_Post;
+
 /**
  * Metaboxes
  *
@@ -107,9 +109,9 @@ class Metaboxes {
 	/**
 	 * Renders the meta box
 	 *
-	 * @param obj $post Post object.
+	 * @param WP_Post $post Post object.
 	 */
-	public function render_metabox( $post ) {
+	public function render_metabox( WP_Post $post ) {
 
 		// Add nonce for security and authentication.
 		wp_nonce_field( 'save_metabox_link', 'save_metabox_link_nonce' );

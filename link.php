@@ -12,10 +12,10 @@
  * Description: Enables a Link, taxonomy and metaboxes. Bring back to life blogroll! 🔗
  * Version:     3.0.0
  * Author:      Jérémy Levron
- * Author URI:  http://www.19h47.fr
+ * Author URI:  https://www.19h47.fr
  * License:     GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain: link
+ * Text Domain: Link
  */
 
 // If this file is called directly, abort.

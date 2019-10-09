@@ -20,7 +20,7 @@ namespace Link;
  * @since      1.0.0
  * @package    Link
  * @subpackage link/includes
- * @author     Jérémy Levron <jeremylevron@19h47.fr> (http://19H47.fr)
+ * @author     Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  */
 class Loader {
 

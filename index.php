@@ -1,2 +1,1 @@
-<?php
-/** Run, Forrest, run! */
+<?php /** Run, Forrest, run! */

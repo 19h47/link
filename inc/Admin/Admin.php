@@ -22,7 +22,7 @@ use Link\Admin\{ Registrations, Metaboxes, Columns, Taxonomies };
  * @since      1.0.0
  * @package    Link
  * @subpackage link/admin
- * @author     Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
+ * @author     Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)
  */
 class Admin {
 
